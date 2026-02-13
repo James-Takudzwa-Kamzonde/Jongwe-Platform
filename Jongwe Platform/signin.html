@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SIGNIN | Jongwe Corner</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  
+     <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Slick CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"/>
+
+  <link rel="icon" type="images/png" sizes="32x32" href="images/ridge.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/jongwe.jpeg">
+
+</head>
+<body class="bg-white text-gray-900">
+
+
+
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- Left: Logo -->
+   <a href="index.html" class="flex items-center gap-3 shrink-0">
+  <img 
+    src="images/logo.png" 
+    class="h-12 w-16 md:h-24 md:w-32" 
+    alt="logo" style="margin-left: -4%;"
+  />
+</a>
+
+      <!-- Center: Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8">
+            <a class="text-gray-800 hover:text-black font-medium"
+   href="index.html"
+   style="font-weight:700;">
+  Home
+</a>
+        
+        <a class="text-gray-800 hover:text-black font-medium" href="Event.html"  style="font-weight:700;">Events</a>
+        <a class="text-gray-800 hover:text-black font-medium" href="contact.html"  style="font-weight:700;">Contact</a>
+      </nav>
+
+
+            <!-- Phone + Social (md+) -->
+<div class="hidden lg:flex items-center gap-2 ml-2">
+  <!-- Phone -->
+     <a href="signin.html" class="flex items-center gap-2 text-[#87743a] hover:text-[#2E3192]/80 authLink flex items-center ">
+  <!-- Lock Icon -->
+  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M12 11V7a4 4 0 10-8 0v4m-1 0h10a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2z"/>
+  </svg>
+
+  <span class="text-sm font-medium whitespace-nowrap">Sign in / Register</span>
+</a>
+
+
+
+  
+</div>
+
+        <!-- Mobile menu button -->
+        <button id="mobileMenuBtn" class="md:hidden ml-1 h-10 w-10 inline-flex items-center justify-center" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+<!-- Backdrop (keep this once in the page) -->
+<div id="backdrop"
+     class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
+     aria-hidden="true"></div>
+
+<!-- RIGHT off-canvas mobile menu -->
+<div id="mobileMenu"
+     class="fixed inset-y-0 right-0 z-[60] w-80 max-w-[85%]
+            bg-white border-l border-gray-200 shadow-xl
+            transform translate-x-full transition-transform duration-300
+            md:hidden hidden">
+
+  <!-- Top bar with close -->
+  <div class="h-14 flex items-center justify-end px-3 border-b border-gray-100">
+    <button id="mobileMenuClose"
+            class="h-10 w-10 inline-flex items-center justify-center rounded-full hover:bg-gray-100"
+            aria-label="Close menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Scrollable content -->
+  <div class="h-[calc(100vh-3.5rem)] overflow-y-auto">
+
+    <!-- Search (on white, rounded green like the image) -->
+    <div class="px-4 pt-3 pb-2 bg-white ">
+      <div class="flex items-center gap-2 bg-white rounded-xl border-2 border-green-300 px-3 py-2">
+        <input type="text" placeholder="Search..." class="flex-1 outline-none text-sm placeholder-gray-500">
+        <button class="shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="M21 21l-4.3-4.3"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu list (white background, separators like screenshot) -->
+    <nav class="mt-1 bg-white text-gray-900">
+      <a href="./index.html"     class="block px-4 py-3 border-t border-gray-200">Home</a>
+      <a href="./pricing.html"   class="block px-4 py-3 border-t border-gray-200">Pricing</a>
+      <a href="/Event.html"      class="block px-4 py-3 border-t border-gray-200">Events</a>
+      <a href="./route-map.html" class="block px-4 py-3 border-t border-gray-200">Contact</a>
+     
+    </nav>
+
+    <!-- Footer bits -->
+    <div class="px-4 py-4 border-t border-gray-200 bg-white">
+        <a href="tel:+263784679659" class="flex items-center gap-2 text-[#ED3037] hover:text-[#2E3192]/80">
+
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M2 5.5C2 4.12 3.12 3 4.5 3h2.1c.66 0 1.25.42 1.45 1.04l1.05 3.16a1.5 1.5 0 01-.39 1.54l-1.1 1.1a15.05 15.05 0 006.6 6.6l1.1-1.1a1.5 1.5 0 011.54-.39l3.16 1.05c.62.2 1.04.79 1.04 1.45v2.1c0 1.38-1.12 2.5-2.5 2.5h-.5C9.82 21 3 14.18 3 5.5v0z"/>
+    </svg>
+    <span class="text-sm font-medium whitespace-nowrap">+263 78 467 9659</span>
+  </a>
+      <div class="mt-3 flex items-center gap-3">
+        <a href="#" aria-label="Facebook" class="h-8 w-8 flex items-center justify-center rounded-full border border-gray-300">f</a>
+       
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</header>
+
+<section class="signin-wrap">
+  <div class="signin-shell">
+
+   
+
+    <div class="signin-card">
+      <!-- LEFT (image + overlay copy) -->
+      <div class="signin-left">
+       
+
+        <a class="backlink" href="index.html">← Back to Website</a>
+
+        <div class="left-copy">
+          <h2>Feel the Music. Catch the Vibe. Experience It Live.</h2>
+          <p>
+              From chart-topping artists to unforgettable performances, join the crowd and be part of the ultimate live music experience.
+</p>
+          </p>
+          <div class="slider-dots" aria-hidden="true">
+            <span class="s-dot"></span>
+            <span class="s-dot active"></span>
+            <span class="s-dot"></span>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT (form) -->
+     <div class="signin-right">
+ <form class="form-box" id="loginForm" autocomplete="on" novalidate>
+  <h2>Welcome Back!</h2>
+  <p class="sub">Log in to buy tickets, view event updates, and secure your spot for the show.</p>
+
+  <label class="lbl" for="loginEmail">Email</label>
+  <input
+    id="loginEmail"
+    name="email"
+    class="inp"
+    type="email"
+    placeholder="Input your email"
+    autocomplete="email"
+    required
+  >
+
+  <label class="lbl" for="loginPassword">Password</label>
+  <div class="pass">
+    <input
+      id="loginPassword"
+      name="password"
+      class="inp inp-pass"
+      type="password"
+      placeholder="Enter your password"
+      autocomplete="current-password"
+      required
+    >
+    <button class="eye" type="button" aria-label="Toggle password">
+      <!-- eye icon -->
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+        <path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12Z" stroke="currentColor" stroke-width="2"/>
+        <path d="M12 15a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z" stroke="currentColor" stroke-width="2"/>
+      </svg>
+    </button>
+  </div>
+
+  <div class="row">
+    <label class="chk">
+      <input id="rememberMe" type="checkbox">
+      <span>Remember Me</span>
+    </label>
+    <a class="link" href="#">Forgot Password?</a>
+  </div>
+
+  <button class="btn" type="submit" id="loginBtn" >Login</button>
+
+  <p class="foot">
+    Don’t have an account?
+    <a class="link" href="signup.html">Sign up here</a>
+  </p>
+</form>
+
+</div>
+
+    </div>
+
+  </div>
+</section>
+
+
+
+
+
+
+
+<footer class="mced-footer-wrap">
+  <div class="mced-footer">
+    <!-- Left -->
+    <div class="mced-left">
+      <div class="mced-title">Jongwe Corner</div>
+    </div>
+
+    <div class="mced-divider" aria-hidden="true"></div>
+
+    <!-- Middle -->
+    <div class="mced-mid">
+      <nav class="mced-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="e">Events</a>
+        <a href="#">Contact</a>
+   
+      </nav>
+      <div class="mced-copy">© 2026 Jongwe Corner. All right reserved.</div>
+    </div>
+
+    <!-- Right -->
+    <div class="mced-right">
+      <div class="mced-icons" aria-label="Social links">
+        <!-- Facebook -->
+        <a class="mced-icon" href="#" aria-label="Facebook" title="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.2-1.5 1.6-1.5h1.7V5c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6V11H7v3h2.6v8h3.9z"/>
+          </svg>
+        </a>
+        <!-- Twitter/X -->
+        <a class="mced-icon" href="#" aria-label="Twitter" title="Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M22 6.1c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.2 1.7-2.1-.8.5-1.7.8-2.6 1A3.7 3.7 0 0 0 12.5 9c0 .3 0 .6.1.8A10.5 10.5 0 0 1 3 5.6a3.7 3.7 0 0 0 1.1 4.9c-.6 0-1.2-.2-1.7-.5v.1c0 1.8 1.3 3.4 3.1 3.7-.3.1-.7.1-1 .1-.2 0-.5 0-.7-.1.5 1.6 2 2.8 3.8 2.8A7.4 7.4 0 0 1 2 18.1a10.5 10.5 0 0 0 5.7 1.7c6.9 0 10.7-5.7 10.7-10.7v-.5c.8-.5 1.4-1.1 1.9-1.8z"/>
+          </svg>
+        </a>
+        <!-- Instagram -->
+        <a class="mced-icon" href="#" aria-label="Instagram" title="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A5.5 5.5 0 1 1 6.5 14 5.5 5.5 0 0 1 12 8.5zm0 2A3.5 3.5 0 1 0 15.5 14 3.5 3.5 0 0 0 12 10.5zM17.8 6.2a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/>
+          </svg>
+        </a>
+        <!-- WhatsApp -->
+        <a class="mced-icon" href="#" aria-label="WhatsApp" title="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.1a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8.1 8.1 0 1 1 12 20.1zm4.7-5.9c-.3-.1-1.7-.8-1.9-.9s-.4-.1-.6.1-.7.9-.9 1.1-.3.2-.5.1a6.6 6.6 0 0 1-1.9-1.2 7 7 0 0 1-1.3-1.6c-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2.1-.3 0-.5s-.6-1.5-.8-2-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3s-1 1-1 2.4 1 2.8 1.1 3c.1.2 2 3 4.9 4.1.7.3 1.2.4 1.6.5.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.1-1.4-.1-.1-.3-.2-.6-.3z"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="mced-support">
+        <span class="muted">Support:</span> <a href="mailto:mudassar@gmail.com">support@jongwecorner.zw</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+  const API = "http://127.0.0.1:8000";
+
+  function saveUser(user) {
+    localStorage.setItem("jc_user", JSON.stringify(user));
+  }
+
+  document.getElementById("loginForm")?.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const email = document.getElementById("loginEmail")?.value.trim().toLowerCase();
+    const password = document.getElementById("loginPassword")?.value;
+
+    if (!email || !password) return alert("Enter email + password");
+
+    try {
+      const res = await fetch(`${API}/login`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) return alert(data.detail || `Login failed (${res.status})`);
+
+      // ✅ save email for avatar
+      localStorage.setItem("user_email", email);
+
+      // token if your backend returns it
+      if (data.access_token) localStorage.setItem("token", data.access_token);
+
+      saveUser({ ...data, email });
+
+      alert("Login successful!");
+      window.location.href = "index.html";
+    } catch (err) {
+      console.error(err);
+      alert("Server error. Is FastAPI running?");
+    }
+  });
+</script>
+
+
+
+</body>
+</html>

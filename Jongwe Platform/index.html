@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>HOME | Jongwe Corner</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css" />
+  
+     <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Bootstrap 5 CSS -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<!-- Bootstrap 5 JS (bundle includes Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+
+
+  <!-- Slick CSS -->
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick-theme.min.css"/>
+
+  <link rel="icon" type="images/png" sizes="32x32" href="images/ridge.png">
+<link rel="icon" type="image/png" sizes="16x16" href="images/jongwe.jpeg">
+
+</head>
+<body class="bg-white text-gray-900">
+
+
+
+<!-- Header -->
+<header class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-gray-200">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16 md:h-20">
+      <!-- Left: Logo -->
+   <a href="index.html" class="flex items-center gap-3 shrink-0">
+  <img 
+    src="images/logo.png" 
+    class="h-12 w-16 md:h-24 md:w-32  sm:h-20 sm:w-20" 
+    alt="logo" style="margin-left: -4%;"
+  />
+</a>
+
+      <!-- Center: Desktop Nav -->
+      <nav class="hidden md:flex items-center gap-8">
+            <a class="text-gray-800 hover:text-black font-medium"
+   href="index.html"
+   style="color:#87743a;font-weight:800;">
+  Home
+</a>
+        
+        <a class="text-gray-800 hover:text-black font-medium" href="Event.html"  style="font-weight:700;">Events</a>
+        <a class="text-gray-800 hover:text-black font-medium" href="#"  style="font-weight:700;">Contact</a>
+      </nav>
+
+
+            <!-- Phone + Social (md+) -->
+<div class="hidden lg:flex items-center gap-2 ml-2">
+<div class="flex items-center gap-3">
+  <!-- Logged OUT -->
+  <a id="authLinkLoggedOut" href="signin.html"
+     class="flex items-center gap-2 px-4 py-2 rounded-full bg-white shadow-sm border border-gray-200
+            text-[#87743a] hover:text-[#2E3192]/80 transition">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+         stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round"
+            d="M12 11V7a4 4 0 10-8 0v4m-1 0h10a2 2 0 012 2v7a2 2 0 01-2 2H5a2 2 0 01-2-2v-7a2 2 0 012-2z"/>
+    </svg>
+    <span class="text-sm font-medium whitespace-nowrap">Sign in / Register</span>
+  </a>
+
+  <!-- Logged IN -->
+  <div class="relative hidden" id="userMenuWrap">
+    <button id="userMenuBtn" type="button"
+      class="flex items-center justify-center bg-transparent p-0 border-0 cursor-pointer"
+      aria-haspopup="true" aria-expanded="false">
+      <span id="userAvatar"
+        class="flex items-center justify-center w-10 h-10 rounded-full
+               bg-gradient-to-br from-[#2E3192] to-[#87743a]
+               text-white font-semibold text-sm shadow-md ring-2 ring-white/40
+               hover:shadow-lg hover:scale-[1.03] transition">
+        U
+      </span>
+    </button>
+
+    <div id="userDropdown"
+  class="hidden absolute right-0 mt-2 w-72 bg-white rounded-lg shadow-2xl border border-black/5 overflow-hidden z-50">
+
+  <!-- Header -->
+  <div class="px-4 py-4 bg-gradient-to-b from-gray-50 to-white border-b border-black/5">
+    <div class="flex items-center gap-3">
+      <div class="w-9 h-9 rounded-full bg-gray-900/90 text-white flex items-center justify-center text-sm font-semibold">
+        <span id="userAvatarMini">J</span>
+      </div>
+
+      <div class="min-w-0">
+  <p class="text-sm font-semibold text-gray-900 leading-5">
+    Hi, <span id="userNameText"></span>
+  </p>
+  <p id="userEmailText" class="text-xs text-gray-500 truncate"></p>
+</div>
+
+    </div>
+  </div>
+
+  <!-- Menu -->
+  <div class="py-2">
+    <a href="#" class="menuItem">
+      <span>My Account</span>
+      <span class="text-xs text-gray-400">›</span>
+    </a>
+    <a href="#" class="menuItem">
+      <span>My Tickets</span>
+      <span class="text-xs text-gray-400">›</span>
+    </a>
+    <a href="#" class="menuItem">
+      <span>Orders</span>
+      <span class="text-xs text-gray-400">›</span>
+    </a>
+     
+  </div>
+
+  <div class="border-t border-black/5"></div>
+
+  <!-- Sign out -->
+  <button id="signOutBtn"
+    class="w-full text-left px-4 py-3 text-sm font-medium text-red-600 hover:bg-red-50/60 transition" style="color: red;">
+    Sign out
+  </button>
+</div>
+
+  </div>
+</div>
+
+
+
+</div>
+
+
+        <!-- Mobile menu button -->
+        <button id="mobileMenuBtn" class=" md:hidden ml-1 h-10 w-10 inline-flex items-center justify-center" aria-label="Open menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Mobile dropdown menu -->
+<!-- Backdrop (keep this once in the page) -->
+<div id="backdrop"
+     class="fixed inset-0 bg-black/40 opacity-0 pointer-events-none transition-opacity duration-300 md:hidden"
+     aria-hidden="true"></div>
+
+<!-- RIGHT off-canvas mobile menu -->
+<div id="mobileMenu"
+     class="fixed inset-y-0 right-0 z-[60] w-80 max-w-[85%]
+            bg-white border-l border-gray-200 shadow-xl
+            transform translate-x-full transition-transform duration-300
+            md:hidden hidden">
+
+  <!-- Top bar with close -->
+  <div class="h-14 flex items-center justify-end px-3 border-b border-gray-100">
+    <button id="mobileMenuClose"
+            class="h-10 w-10 inline-flex items-center justify-center rounded-full hover:bg-gray-100"
+            aria-label="Close menu">
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+      </svg>
+    </button>
+  </div>
+
+  <!-- Scrollable content -->
+  <div class="h-[calc(100vh-3.5rem)] overflow-y-auto">
+
+    <!-- Search (on white, rounded green like the image) -->
+    <div class="px-4 pt-3 pb-2 bg-white ">
+      <div class="flex items-center gap-2 bg-white rounded-xl border-2 border-green-300 px-3 py-2">
+        <input type="text" placeholder="Search..." class="flex-1 outline-none text-sm placeholder-gray-500">
+        <button class="shrink-0">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="7"/>
+            <path d="M21 21l-4.3-4.3"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Menu list (white background, separators like screenshot) -->
+    <nav class="mt-1 bg-white text-gray-900">
+      <a href="./index.html"     class="block px-4 py-3 border-t border-gray-200">Home</a>
+     
+      <a href="/Event.html"      class="block px-4 py-3 border-t border-gray-200">Events</a>
+      <a href="./route-map.html" class="block px-4 py-3 border-t border-gray-200">Contact</a>
+     
+    </nav>
+
+    <!-- Footer bits -->
+    <div class="px-4 py-4 border-t border-gray-200 bg-white">
+        <a href="tel:+263784679659" class="flex items-center gap-2 text-[#ED3037] hover:text-[#2E3192]/80">
+
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <path stroke-linecap="round" stroke-linejoin="round" d="M2 5.5C2 4.12 3.12 3 4.5 3h2.1c.66 0 1.25.42 1.45 1.04l1.05 3.16a1.5 1.5 0 01-.39 1.54l-1.1 1.1a15.05 15.05 0 006.6 6.6l1.1-1.1a1.5 1.5 0 011.54-.39l3.16 1.05c.62.2 1.04.79 1.04 1.45v2.1c0 1.38-1.12 2.5-2.5 2.5h-.5C9.82 21 3 14.18 3 5.5v0z"/>
+    </svg>
+    <span class="text-sm font-medium whitespace-nowrap">+263 78 467 9659</span>
+  </a>
+      <div class="mt-3 flex items-center gap-3">
+        <a href="#" aria-label="Facebook" class="h-8 w-8 flex items-center justify-center rounded-full border border-gray-300">f</a>
+       
+      </div>
+    </div>
+
+  </div>
+</div>
+
+</header>
+
+  <!-- Hero -->
+ <section class="star-bg relative">
+  <div class="max-w-7xl mx-auto px-4 lg:px-24 py-16 md:py-16">
+    <div class="grid md:grid-cols-2 items-center gap-20 pt-12">
+
+      <!-- LEFT COLUMN -->
+      <div class="text-white" style="margin-top: -15%;">
+        <p class="mt-2 uppercase tracking-widest text-white/100 text-xs md:text-sm" style="font-weight: 600; font-size: 15px;">
+          ONE NIGHT. BIG ENERGY.
+        </p>
+
+        <h1 class="mt-2 text-2xl md:text-5xl font-extrabold">
+          The Home of Music • Vibes • Culture
+        </h1>
+
+        <!-- Countdown Pills -->
+  <div class="mt-6 flex flex-wrap gap-4">
+  <div class="count-pill bg-red-500 rounded-2xl w-24 md:w-28 h-20 md:h-24 flex flex-col items-center justify-center text-center">
+    <div id="days" class="text-2xl md:text-3xl font-bold leading-none">00</div>
+    <div class="mt-2 text-xs md:text-sm uppercase tracking-wider font-bold ">Days</div>
+  </div>
+
+  <div class="count-pill bg-cyan-500 rounded-2xl w-24 md:w-28 h-20 md:h-24 flex flex-col items-center justify-center text-center">
+    <div id="hours" class="text-2xl md:text-3xl font-bold leading-none">00</div>
+    <div class="mt-2 text-xs md:text-sm uppercase tracking-wider font-bold ">Hours</div>
+  </div>
+
+  <div class="count-pill bg-amber-400 rounded-2xl w-24 md:w-28 h-20 md:h-24 flex flex-col items-center justify-center text-center">
+    <div id="minutes" class="text-2xl md:text-3xl font-bold leading-none">00</div>
+    <div class="mt-2 text-xs md:text-sm uppercase tracking-wider font-bold ">Minutes</div>
+  </div>
+
+  <div class="count-pill bg-violet-600 rounded-2xl w-24 md:w-28 h-20 md:h-24 flex flex-col items-center justify-center text-center">
+    <div id="seconds" class="text-2xl md:text-3xl font-bold leading-none">00</div>
+    <div class="mt-2 text-xs md:text-sm uppercase tracking-wider font-bold ">Seconds</div>
+  </div>
+
+  
+</div>
+
+
+
+      
+      </div>
+
+      <!-- RIGHT COLUMN -->
+      <div class="relative flex justify-end" style="margin-top: -5%;">
+        <!-- EVENT CARD -->
+       <div class="event-card">
+
+  <!-- SLIDER -->
+  <div id="eventCardCarousel" class="carousel slide event-card__slider" data-bs-ride="carousel" data-bs-interval="4500">
+    <!-- Dots -->
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#eventCardCarousel" data-bs-slide-to="0" class="active" aria-current="true"></button>
+      <button type="button" data-bs-target="#eventCardCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#eventCardCarousel" data-bs-slide-to="2"></button>
+    </div>
+
+    <!-- Slides -->
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img class="event-card__img" src="images/moh.jpeg" alt="Jongwe Corner 2026 Slide 1" />
+      </div>
+
+      <div class="carousel-item">
+        <img class="event-card__img" src="images/eee.jpeg" alt="Jongwe Corner 2026 Slide 2" />
+      </div>
+
+      <div class="carousel-item">
+        <img class="event-card__img" src="images/gevha.jpeg" alt="Jongwe Corner 2026 Slide 3" />
+      </div>
+
+      <div class="carousel-item">
+        <img class="event-card__img" src="images/runna.jpeg" alt="Jongwe Corner 2026 Slide 3" />
+      </div>
+
+      
+      <div class="carousel-item">
+        <img class="event-card__img" src="images/weraga.jpeg" alt="Jongwe Corner 2026 Slide 3" />
+      </div>
+
+
+    </div>
+
+    <!-- Arrows -->
+   
+  </div>
+
+  <!-- Everything else stays the same -->
+  <div class="event-card__title" style="margin-top: -10% !important;">
+    The Piano People<br />2026 Edition
+  </div>
+
+  <div class="event-card__meta mt-6">
+    <div class="event-card__date">
+      <div class="event-card__month">MAR</div>
+      <div class="event-card__day">01</div>
+      <div class="event-card__dow">SUN</div>
+    </div>
+
+    <div class="event-card__details">
+      <div class="event-card__venue">Jongwe Corner</div>
+      <div class="event-card__addr">Harare, Zimbabwe</div>
+      <div class="event-card__addr">From $5 (Early Bird)</div>
+    </div>
+
+    <div class="event-card__time">
+      <div class="event-card__clock">18:00</div>
+      <div class="event-card__tz">LATE</div>
+    </div>
+  </div>
+
+  <a href="#" class="event-card__cta js-get-tickets btn-get-tickets"
+     data-bs-toggle="modal" data-bs-target="#myModal">
+   <span class="icon"><i class="fa-solid fa-ticket" style="font-size: 18px;"></i></span>
+
+    Get Tickets
+  </a>
+
+</div>
+
+
+        <!-- optional floating shape -->
+        <svg class="absolute -z-0 -top-6 -left-6 h-20 w-20 opacity-80" viewBox="0 0 100 100" fill="none">
+          <circle cx="50" cy="50" r="50" fill="url(#g)"/>
+          <defs>
+            <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+              <stop offset="0%" stop-color="#6b4bff"/>
+              <stop offset="100%" stop-color="#f43f5e"/>
+            </linearGradient>
+          </defs>
+        </svg>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+<!-- Footer (matches the screenshot layout) -->
+<footer class="mced-footer-wrap">
+  <div class="mced-footer">
+    <!-- Left -->
+    <div class="mced-left">
+      <div class="mced-title">Jongwe Corner</div>
+    </div>
+
+    <div class="mced-divider" aria-hidden="true"></div>
+
+    <!-- Middle -->
+    <div class="mced-mid">
+      <nav class="mced-links" aria-label="Footer navigation">
+        <a href="index.html">Home</a>
+        <a href="e">Events</a>
+        <a href="#">Contact</a>
+   
+      </nav>
+      <div class="mced-copy">© 2026 Jongwe Corner. All right reserved.</div>
+    </div>
+
+    <!-- Right -->
+    <div class="mced-right">
+      <div class="mced-icons" aria-label="Social links">
+        <!-- Facebook -->
+        <a class="mced-icon" href="#" aria-label="Facebook" title="Facebook">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M13.5 22v-8h2.7l.4-3h-3.1V9.1c0-.9.2-1.5 1.6-1.5h1.7V5c-.3 0-1.4-.1-2.7-.1-2.7 0-4.5 1.6-4.5 4.6V11H7v3h2.6v8h3.9z"/>
+          </svg>
+        </a>
+        <!-- Twitter/X -->
+        <a class="mced-icon" href="#" aria-label="Twitter" title="Twitter">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M22 6.1c-.7.3-1.5.6-2.3.7.8-.5 1.4-1.2 1.7-2.1-.8.5-1.7.8-2.6 1A3.7 3.7 0 0 0 12.5 9c0 .3 0 .6.1.8A10.5 10.5 0 0 1 3 5.6a3.7 3.7 0 0 0 1.1 4.9c-.6 0-1.2-.2-1.7-.5v.1c0 1.8 1.3 3.4 3.1 3.7-.3.1-.7.1-1 .1-.2 0-.5 0-.7-.1.5 1.6 2 2.8 3.8 2.8A7.4 7.4 0 0 1 2 18.1a10.5 10.5 0 0 0 5.7 1.7c6.9 0 10.7-5.7 10.7-10.7v-.5c.8-.5 1.4-1.1 1.9-1.8z"/>
+          </svg>
+        </a>
+        <!-- Instagram -->
+        <a class="mced-icon" href="#" aria-label="Instagram" title="Instagram">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm10 2H7a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3zm-5 4.5A5.5 5.5 0 1 1 6.5 14 5.5 5.5 0 0 1 12 8.5zm0 2A3.5 3.5 0 1 0 15.5 14 3.5 3.5 0 0 0 12 10.5zM17.8 6.2a1 1 0 1 1-1 1 1 1 0 0 1 1-1z"/>
+          </svg>
+        </a>
+        <!-- WhatsApp -->
+        <a class="mced-icon" href="#" aria-label="WhatsApp" title="WhatsApp">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+            <path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.1a8.1 8.1 0 0 1-4.1-1.1l-.3-.2-2.9.8.8-2.8-.2-.3A8.1 8.1 0 1 1 12 20.1zm4.7-5.9c-.3-.1-1.7-.8-1.9-.9s-.4-.1-.6.1-.7.9-.9 1.1-.3.2-.5.1a6.6 6.6 0 0 1-1.9-1.2 7 7 0 0 1-1.3-1.6c-.1-.2 0-.4.1-.5l.4-.4c.1-.1.2-.3.3-.4.1-.2.1-.3 0-.5s-.6-1.5-.8-2-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3s-1 1-1 2.4 1 2.8 1.1 3c.1.2 2 3 4.9 4.1.7.3 1.2.4 1.6.5.7.2 1.3.2 1.8.1.5-.1 1.7-.7 1.9-1.4.2-.7.2-1.3.1-1.4-.1-.1-.3-.2-.6-.3z"/>
+          </svg>
+        </a>
+      </div>
+
+      <div class="mced-support">
+        <span class="muted">Support:</span> <a href="mailto:mudassar@gmail.com">support@jongwecorner.zw</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+
+<div class="modal fade ticket-modal" id="myModal" tabindex="-1" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-lg">
+    <div class="modal-content">
+
+      <div class="modal-header">
+        <h5 class="modal-title" id="myModalLabel">Get Your Ticket</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+
+      <div class="modal-body">
+
+        <div class="ticket-grid">
+
+          <!-- EARLY BIRD -->
+          <label class="ticket-card is-selected" data-type="Early Bird" style="cursor:pointer;">
+            <input class="ticket-radio" type="radio" name="ticket_type" value="Early Bird" checked>
+            <span class="ticket-badge">BEST</span>
+
+            <div class="ticket-name">EARLY BIRD</div>
+            <div class="ticket-price">$5</div>
+            <div class="ticket-sub">Limited tickets • Best price</div>
+
+            <div class="ticket-perf"></div>
+
+            <button type="button" class="ticket-btn primary js-pick">BUY TICKET</button>
+          </label>
+
+          <!-- STANDARD (use VIP if you want, rename freely) -->
+          <label class="ticket-card" data-type="VIP" style="cursor:pointer;">
+            <input class="ticket-radio" type="radio" name="ticket_type" value="VIP">
+            <div class="ticket-name">VIP</div>
+            <div class="ticket-price">$10</div>
+            <div class="ticket-sub">Priority entry • VIP area</div>
+
+            <div class="ticket-perf"></div>
+
+            <button type="button" class="ticket-btn ghost js-pick">BUY TICKET</button>
+          </label>
+
+          <!-- VVIP -->
+          <label class="ticket-card" data-type="VVIP" style="cursor:pointer;">
+            <input class="ticket-radio" type="radio" name="ticket_type" value="VVIP">
+            <div class="ticket-name">VVIP</div>
+            <div class="ticket-price">$20</div>
+            <div class="ticket-sub">Best seats • Meet &amp; greet</div>
+
+            <div class="ticket-perf"></div>
+
+            <button type="button" class="ticket-btn ghost js-pick">BUY TICKET</button>
+          </label>
+
+        </div>
+
+        <div class="ticket-controls">
+          <div style="display:flex;align-items:center;gap:10px;">
+            <label for="ticketQty">Quantity</label>
+            <input id="ticketQty" type="number" min="1" value="1">
+          </div>
+
+          <div>
+            <span style="opacity:.8;">Total: </span>
+            <span id="ticketTotal" class="ticket-total">0</span>
+          </div>
+        </div>
+<!-- Bottom actions -->
+<div class="ticket-actions">
+  
+
+  <button type="button" class="btn btn-proceed" id="proceedBtn">
+    Proceed
+  </button>
+</div>
+      </div>
+
+     
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+  <!-- JS -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.9.0/slick.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
+
+</body>
+</html>
