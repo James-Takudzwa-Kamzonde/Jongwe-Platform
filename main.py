@@ -228,3 +228,6 @@ def db_test():
         result = conn.execute(text("SELECT 1"))
         return {"db": "connected", "result": list(result)}
 
+@app.get("/")
+def home():
+    return {"status": "Jongwe Platform API Running"}
