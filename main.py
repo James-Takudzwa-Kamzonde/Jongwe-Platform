@@ -5,16 +5,21 @@ from sqlalchemy.orm import Session
 from sqlalchemy import text
 from passlib.context import CryptContext
 import uuid
+from fastapi.middleware.cors import CORSMiddleware
 
 from database import get_db
 
 app = FastAPI()
 
-# ✅ CORS (Dev mode)
+origins = [
+    "https://jongwe-platform.vercel.app",
+    "https://jongwe-platform-cnte-git-main-james-takudzwa-kamzondes-projects.vercel.app",
+]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
-    allow_credentials=False,
+    allow_origins=origins,
+    allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
