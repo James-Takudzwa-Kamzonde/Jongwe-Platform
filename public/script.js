@@ -1,4 +1,8 @@
-const API = "http://127.0.0.1:8000";
+const API =
+  (location.hostname === "localhost" || location.hostname === "127.0.0.1")
+    ? "http://127.0.0.1:8000"
+    : "https://YOUR-LIVE-API-DOMAIN.COM"; // <-- your deployed FastAPI
+
 
 
 
@@ -65,18 +69,6 @@ const API = "http://127.0.0.1:8000";
     });
   });
 
-    document.getElementById("proceedBtn")?.addEventListener("click", () => {
-    const type = document.querySelector('input[name="ticket_type"]:checked')?.value;
-    const qty  = document.getElementById("ticketQty")?.value || 1;
-    const total = document.getElementById("ticketTotal")?.textContent || "";
-
-    // Example: do something
-    console.log({ type, qty, total });
-
-    // Example redirect (replace with your page)
-    // window.location.href = `checkout.html?type=${encodeURIComponent(type)}&qty=${qty}`;
-  });
-  
 
 
   (function () {
@@ -465,7 +457,7 @@ document.getElementById("proceedBtn")?.addEventListener("click", async () => {
     console.log({ type, qty, total });
 
     // Example: send request to create order and proceed to payment
-    const response = await fetch("http://127.0.0.1:8000/create-order", {
+    const response = await fetch(`${API}/create-order`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
