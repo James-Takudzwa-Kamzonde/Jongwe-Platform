@@ -218,3 +218,13 @@ def debug_user_hash(email: str, db: Session = Depends(get_db)):
 
     # helps you see if hash looks like bcrypt ($2b$...)
     return {"email": row.email, "password_hash": row.password_hash}
+
+    from sqlalchemy import text
+from database import engine
+
+@app.get("/db-test")
+def db_test():
+    with engine.connect() as conn:
+        result = conn.execute(text("SELECT 1"))
+        return {"db": "connected", "result": list(result)}
+
