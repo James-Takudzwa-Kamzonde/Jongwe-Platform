@@ -11,19 +11,21 @@ from database import get_db
 
 app = FastAPI()
 
+from fastapi.middleware.cors import CORSMiddleware
+
 origins = [
     "https://jongwe-platform.vercel.app",
-    "https://www.jongwe-platform.vercel.app",
     "https://jongwe-platform-cnte-git-main-james-takudzwa-kamzondes-projects.vercel.app",
 ]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
-    allow_credentials=True,
+    allow_credentials=False,  # IMPORTANT
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 # ✅ Password hashing
 pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
