@@ -11,21 +11,17 @@ from database import get_db
 
 app = FastAPI()
 
-from fastapi.middleware.cors import CORSMiddleware
-
 origins = [
     "https://jongwe-platform.vercel.app",
-    "https://jongwe-platform-cnte-git-main-james-takudzwa-kamzondes-projects.vercel.app",
 ]
 
 app.add_middleware(
     CORSMiddleware,
     allow_origins=origins,
-    allow_credentials=False,  # IMPORTANT
+    allow_credentials=False,  # IMPORTANT (keep false)
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 # ✅ Password hashing
 pwd = CryptContext(schemes=["bcrypt"], deprecated="auto")
@@ -239,3 +235,8 @@ def db_test():
 @app.get("/")
 def home():
     return {"status": "Jongwe Platform API Running"}
+
+
+@app.get("/ping")
+def ping():
+    return {"ok": True, "marker": "CORS_TEST_001"}
