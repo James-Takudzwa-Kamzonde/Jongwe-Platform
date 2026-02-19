@@ -13,6 +13,7 @@ app = FastAPI()
 
 origins = [
     "https://jongwe-platform.vercel.app",
+    "https://www.jongwe-platform.vercel.app",
     "https://jongwe-platform-cnte-git-main-james-takudzwa-kamzondes-projects.vercel.app",
 ]
 
