@@ -1,7 +1,7 @@
 const API =
   (location.hostname === "localhost" || location.hostname === "127.0.0.1")
     ? "http://127.0.0.1:8000"
-    : "https://YOUR-LIVE-API-DOMAIN.COM"; // <-- your deployed FastAPI
+    : "https://jongwe-platform-cnte-git-main-james-takudzwa-kamzondes-projects.vercel.app"; // <-- your deployed FastAPI
 
 
 

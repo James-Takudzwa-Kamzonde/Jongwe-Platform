@@ -307,13 +307,13 @@
 
 
   <!-- JS -->
-  <script>
+<script>
   // ✅ Local dev -> http://127.0.0.1:8000
-  // ✅ Vercel prod -> /api
+  // ✅ Live prod -> your FastAPI public URL (NOT /api unless you added vercel.json rewrites)
   const API =
     (location.hostname === "localhost" || location.hostname === "127.0.0.1")
       ? "http://127.0.0.1:8000"
-      : "/api";
+      : "https://jongwe-platform-cnte-git-main-james-takudzwa-kamzondes-projects.vercel.app"; // <-- change this
 
   // ---------- UI helpers ----------
   function ensureNotice() {
@@ -383,15 +383,7 @@
     const detail = body?.detail;
 
     if (status === 422) return "Please check your details and try again.";
-
-    if (detail === "Email already exists") {
-      return "That email is already registered. Try signing in instead.";
-    }
-
-    if (typeof detail === "string" && detail.toLowerCase().includes("password is too long")) {
-      return "Your password is too long. Please use a shorter password.";
-    }
-
+    if (detail === "Email already exists") return "That email is already registered. Try signing in instead.";
     if (status === 409) return "That email is already registered. Try signing in instead.";
     if (status === 400) return detail || "Please check your details and try again.";
     if (status === 401) return "Incorrect email or password.";
@@ -400,11 +392,7 @@
     if (status === 429) return "Too many attempts. Please wait a moment and try again.";
     if (status >= 500) return "We couldn’t create your account right now. Please try again in a moment.";
 
-    return detail || body?.message || `Signup failed. Please try again.`;
-  }
-
-  function isNetworkError(err) {
-    return err instanceof TypeError;
+    return detail || body?.message || "Signup failed. Please try again.";
   }
 
   // ---------- Main ----------
@@ -422,22 +410,10 @@
       const confirm = document.getElementById("signupConfirmPassword")?.value || "";
       const terms = document.getElementById("signupTerms")?.checked;
 
-      if (!full_name || !email || !password) {
-        showNotice("error", "Please fill in all required fields.");
-        return;
-      }
-      if (!terms) {
-        showNotice("error", "Please accept the Terms & Privacy Policy to continue.");
-        return;
-      }
-      if (password.length < 6) {
-        showNotice("error", "Password must be at least 6 characters.");
-        return;
-      }
-      if (password !== confirm) {
-        showNotice("error", "Passwords do not match. Please try again.");
-        return;
-      }
+      if (!full_name || !email || !password) return showNotice("error", "Please fill in all required fields.");
+      if (!terms) return showNotice("error", "Please accept the Terms & Privacy Policy to continue.");
+      if (password.length < 6) return showNotice("error", "Password must be at least 6 characters.");
+      if (password !== confirm) return showNotice("error", "Passwords do not match. Please try again.");
 
       setLoading(true);
 
@@ -450,6 +426,7 @@
 
         const body = await readJsonSafe(res);
 
+        console.log("[SIGNUP] API:", API);
         console.log("[SIGNUP] status:", res.status);
         console.log("[SIGNUP] body:", body);
 
@@ -460,18 +437,10 @@
         }
 
         showNotice("success", "Account created successfully. Redirecting to sign in...");
-        setTimeout(() => {
-          window.location.href = "signin.html";
-        }, 800);
+        setTimeout(() => (window.location.href = "signin.html"), 800);
       } catch (err) {
         console.error("[SIGNUP] fetch error:", err);
-
-        if (isNetworkError(err)) {
-          showNotice("error", "We can’t reach the server right now. Please check your connection and try again.");
-        } else {
-          showNotice("error", "Something went wrong. Please try again.");
-        }
-
+        showNotice("error", "We can’t reach the server right now. Please try again.");
         setLoading(false);
       }
     });
